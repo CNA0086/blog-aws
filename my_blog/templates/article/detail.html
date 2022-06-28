@@ -8,6 +8,7 @@
       Author：{{ article.author }}
       <!-- · <a href="#" onclick="confirm_delete()">delete blog</a> -->
       · <a href="#" onclick="confirm_safe_delete()">delete blog</a>
+      · <a href="{% url "article:article_update" article.id %}">编辑文章</a>
       <form
         style="display: none"
         id="safe_delete"
