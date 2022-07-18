@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'password_reset',
     'article',
     'userprofile',
 ]
@@ -124,3 +125,11 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 STATIC_URL = '/static/'
+
+# e-mail settings for reseting password with django-password-reset-2.0
+EMAIL_HOST = "smtp.qq.com"
+EMAIL_HOST_USER = "1031723573"
+EMAIL_HOST_PASSWORD = "glwvazjlscyrbech"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = "Edward's Blog <edwardc061@qq.com>"
