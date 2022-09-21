@@ -18,4 +18,4 @@ class UserRegisterForm(forms.ModelForm):
         if data.get('password') == data.get('password2'):
             return data.get('password')
         else:
-            raise forms.ValidationError("密码输入不一致,请重试。")
+            raise forms.ValidationError("Password mismatch, please try again.")

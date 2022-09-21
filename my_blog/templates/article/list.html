@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block title %}
-    首页
+    Your Blogs
 {% endblock title %}
 {% block content %}
 <div class="container">
@@ -14,7 +14,7 @@
                     <p class="card-text">{{ article.body|slice:'100' }}...</p>
                 </div>
                 <div class="card-footer">
-                    <a href="{% url 'article:article_detail' article.id %}" class="btn btn-primary">阅读本文</a>
+                    <a href="{% url 'article:article_detail' article.id %}" class="btn btn-primary">Read Blog</a>
                 </div>
             </div>
         </div>

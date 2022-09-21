@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% load staticfiles %} {% block title %} 文章详情 
+{% extends "base.html" %} {% load staticfiles %} {% block title %} Blog Details 
 {% endblock title %} {% block content %}
 
 <div class="container">
@@ -8,7 +8,7 @@
       Author：{{ article.author }}
       <!-- · <a href="#" onclick="confirm_delete()">delete blog</a> -->
       · <a href="#" onclick="confirm_safe_delete()">delete blog</a>
-      · <a href="{% url "article:article_update" article.id %}">编辑文章</a>
+      · <a href="{% url "article:article_update" article.id %}">Edit</a>
       <form
         style="display: none"
         id="safe_delete"
@@ -16,7 +16,7 @@
         method="POST"
       >
         {% csrf_token %}
-        <button type="submit">send</button>
+        <button type="submit">Send</button>
       </form>
     </div>
     <div class="col-12">

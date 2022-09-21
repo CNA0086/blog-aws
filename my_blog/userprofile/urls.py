@@ -4,12 +4,12 @@ from . import views
 app_name = 'userprofile'
 
 urlpatterns = [
-    # 用户登录
+    # User log in
     path('login/', views.user_login, name='login'),
-    # 用户退出
+    # User log out
     path('logout/', views.user_logout, name='logout'),
-    # 创建新用户
+    # Create new user
     path('register/', views.user_register, name='register'),
-    # 用户删除
+    # Delete user
     path('delete/<int:id>/', views.user_delete, name='delete'),
 ]

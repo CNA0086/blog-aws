@@ -16,15 +16,15 @@ def user_login(request):
                 login(request, user)
                 return redirect("article:article_list")
             else:
-                return HttpResponse("账号或密码输入有误。请重新输入~")
+                return HttpResponse("Error in username or password, please try again.")
         else:
-            return HttpResponse("账号或密码输入不合法")
+            return HttpResponse("Ilegal username or password, please try again.")
     elif request.method == 'GET':
         user_login_form = UserLoginForm()
         context = { 'form': user_login_form }
         return render(request, 'userprofile/login.html', context)
     else:
-        return HttpResponse("请使用GET或POST请求数据")
+        return HttpResponse("Please use GET or POST to acquire data.")
 
 def user_logout(request):
     logout(request)
@@ -35,32 +35,32 @@ def user_register(request):
         user_register_form = UserRegisterForm(data=request.POST)
         if user_register_form.is_valid():
             new_user = user_register_form.save(commit=False)
-            # 设置密码
+            # Set Password
             new_user.set_password(user_register_form.cleaned_data['password'])
             new_user.save()
-            # 保存好数据后立即登录并返回博客列表页面
+            # Save data, login, then retern to artical list.
             login(request, new_user)
             return redirect("article:article_list")
         else:
-            return HttpResponse("注册表单输入有误。请重新输入~")
+            return HttpResponse("Error in user register form, please try again.")
     elif request.method == 'GET':
         user_register_form = UserRegisterForm()
         context = { 'form': user_register_form }
         return render(request, 'userprofile/register.html', context)
     else:
-        return HttpResponse("请使用GET或POST请求数据")
+        return HttpResponse("Please use GET or POST to acquire data.")
 
 @login_required(login_url="/userprofile/login/")
 def user_delete(request, id):
     if request.method == 'POST':
         user = User.objects.get(id=id)
-        # 验证登录用户、待删除用户是否相同
+        # Make sure the logged in user and user to delete is the same
         if request.user == user:
-            #退出登录，删除数据并返回博客列表
+            # log out, delete data, and return to the article list.
             logout(request)
             user.delete()
             return redirect("article:article_list")
         else:
-            return HttpResponse("你没有删除操作的权限。")
+            return HttpResponse("You do not have the permission to delete.")
     else:
-        return HttpResponse("仅接受post请求。")
+        return HttpResponse("Only accept POST requests.")
